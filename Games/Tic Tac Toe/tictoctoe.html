@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Play Tic-Tac-Toe at Ankan Gaming Zone. A modern, animated game built with Bootstrap 5 and semantic HTML.">
+    <meta name="keywords" content="Tic Tac Toe, Ankan Gaming Zone, mini-game, play online">
+    <meta name="author" content="Ankan Biswas">
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://Ankan-76.github.io/Ankan-Gaming-Zone/Games/Tic%20Tac%20Toe/tictoctoe.html">
+    <title>Tic-Tac-Toe | ANKAN GAMING ZONE</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../CSS/style.css">
+    <link rel="stylesheet" href="tictoctoe.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <div class="container-fluid min-vh-100" style="padding-top: 80px !important;">
+        <div class="row h-100">
+
+            <aside
+                class="col-lg-3 col-md-4 d-flex flex-column sidebar p-4 border-end border-secondary border-opacity-25">
+                <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h1 class="h4 fw-bold m-0"><span class="badge bg-primary me-2">#</span> <span
+                            class="game-title">Tic-Tac-Toe</span></h1>
+                </div>
+
+                <section class="mb-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="text-uppercase text-secondary fs-7 fw-semibold m-0">Player Setup</h6>
+                        <button class="btn btn-sm btn-link text-secondary p-0 text-decoration-none d-md-none"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#playerSetupCollapse"
+                            aria-expanded="false" aria-controls="playerSetupCollapse">
+                            <i class="bi bi-chevron-down toggle-icon"></i>
+                        </button>
+                    </div>
+
+                    <div class="collapse d-md-block" id="playerSetupCollapse">
+                        <div class="mb-3">
+                            <label for="playerX" class="form-label text-primary small">Player X (Starts)</label>
+                            <div class="input-group input-group-dark">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control" id="playerX" value="Ankan">
+                                <button class="btn btn-dark-accent" type="button" id="saveX">Save</button>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="playerO" class="form-label text-o small">Player O</label>
+                            <div class="input-group input-group-dark">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control" id="playerO" value="Ram">
+                                <button class="btn btn-dark-accent" type="button" id="saveO">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="flex-grow-1">
+                    <div class="card scoreboard-card border-0 p-3">
+                        <h6 class="text-uppercase text-secondary fs-7 fw-semibold mb-3">Scoreboard</h6>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-primary" id="scoreNameX">Ankan (X)</span>
+                            <span class="fw-bold fs-5" id="scoreValX">0</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-o" id="scoreNameO">Ram (O)</span>
+                            <span class="fw-bold fs-5" id="scoreValO">0</span>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+            <main
+                class="col-lg-9 col-md-8 d-flex flex-column align-items-center justify-content-center position-relative game-area py-5">
+
+                <div class="turn-indicator px-4 py-2 rounded-pill mb-4 glass-effect fade-in">
+                    <span class="dot bg-primary me-2"></span>
+                    <span class="text-light">Current Turn: <span id="currentTurn" class="fw-bold text-primary">Ankan
+                            (X)</span></span>
+                </div>
+
+                <div class="board-wrapper position-relative">
+                    <div class="game-board" id="gameBoard">
+                        <div class="cell" data-index="0"></div>
+                        <div class="cell" data-index="1"></div>
+                        <div class="cell" data-index="2"></div>
+                        <div class="cell" data-index="3"></div>
+                        <div class="cell" data-index="4"></div>
+                        <div class="cell" data-index="5"></div>
+                        <div class="cell" data-index="6"></div>
+                        <div class="cell" data-index="7"></div>
+                        <div class="cell" data-index="8"></div>
+                    </div>
+                    <div id="winningLine" class="winning-line"></div>
+                </div>
+
+                <div class="d-flex gap-3 mt-4">
+                    <button class="btn btn-dark-accent btn-lg shadow-lg" id="undoBtn" title="Undo" disabled>
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
+                    <button class="btn btn-dark-accent btn-lg shadow-lg" id="redoBtn" title="Redo" disabled>
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="d-flex gap-3 mt-3">
+                    <button class="btn btn-primary btn-lg shadow-lg" id="restartBtn">
+                        <i class="bi bi-arrow-clockwise me-2"></i> Restart Game
+                    </button>
+                    <button class="btn btn-outline-secondary btn-lg" id="resetBtn">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i> Reset Players
+                    </button>
+                </div>
+
+                <div class="toast-container position-fixed top-50 end-0 translate-middle-y p-3">
+                    <div id="winnerToast" class="toast align-items-center text-bg-dark border-0 shadow-lg" role="alert"
+                        aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex p-2">
+                            <div
+                                class="toast-icon bg-primary rounded p-2 me-3 d-flex align-items-center justify-content-center">
+                                <i class="bi bi-trophy-fill text-white fs-4"></i>
+                            </div>
+                            <div class="toast-body">
+                                <h6 class="fw-bold mb-1">Winner!</h6>
+                                <p class="m-0 small text-secondary" id="winnerText">Ankan (X) takes the round.</p>
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                                aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../JS/script.js"></script>
+    <script src="tictoctoe.js"></script>
+    <script>
+        $(function () {
+            $("#header-placeholder").load("../../include/header.html");
+            $("#footer-placeholder").load("../../include/footer.html");
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,224 @@
+:root {
+    --bg-dark: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --neon-blue: #00f3ff;
+    --neon-pink: #ff00ff;
+    --neon-green: #00ff66;
+    --text-primary: #e2e8f0;
+    --overlay-bg: rgba(15, 23, 42, 0.85);
+}
+
+body.bg-dark-blue {
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.05) 0%, transparent 20%);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Glassmorphism Card */
+.game-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Typography */
+.game-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-green), var(--neon-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: shine 3s linear infinite;
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+.snake-logo {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 2.2rem;
+    vertical-align: bottom;
+    background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.4));
+    animation: snake-float 3s ease-in-out infinite alternate;
+}
+
+@keyframes snake-float {
+    0% { transform: translateY(0) rotate(-5deg); }
+    100% { transform: translateY(-5px) rotate(5deg); }
+}
+
+.text-neon {
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.score-box, .highscore-box {
+    font-family: 'Orbitron', sans-serif;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    border-left: 3px solid var(--neon-blue);
+    color: #f2bdf1;
+}
+
+.highscore-box {
+    border-left-color: var(--neon-pink);
+    color: #b5d0f0;
+}
+
+/* Canvas & Wrapper */
+.game-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background: #0b1120; /* Darker than body */
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1; /* Keep square */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Overlays */
+.game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.game-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Buttons */
+.btn-neon {
+    background: transparent;
+    color: var(--neon-blue);
+    border: 2px solid var(--neon-blue);
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+.btn-neon:hover {
+    background: var(--neon-blue);
+    color: #000;
+    box-shadow: 0 0 25px var(--neon-blue);
+}
+
+.text-glow {
+    background: linear-gradient(90deg, #ff00ff, #00f3ff, #ff00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: shine 3s linear infinite;
+    text-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+    font-weight: 700;
+}
+
+.text-glow-red {
+    text-shadow: 0 0 15px red;
+}
+
+#gameOverScreen p {
+    color: #ffea00;
+    text-shadow: 0 0 10px rgba(255, 234, 0, 0.5);
+    font-family: 'Orbitron', sans-serif;
+}
+
+#finalScore {
+    color: #ffea00;
+    text-shadow: 0 0 20px #ffea00;
+}
+
+/* Mobile Controls */
+.ctrl-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    color: var(--neon-blue);
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 0 10px rgba(0, 243, 255, 0.1);
+    animation: rgb-cycle 4s linear infinite;
+}
+
+.ctrl-btn:active {
+    transform: scale(0.92);
+    background: var(--neon-blue);
+    color: #050505;
+    box-shadow: 0 0 25px var(--neon-blue);
+    border-color: var(--neon-blue);
+    animation: none;
+}
+
+@keyframes rgb-cycle {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* Responsive Tweaks */
+@media (max-width: 576px) {
+    .game-card {
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
+    .game-wrapper {
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+}

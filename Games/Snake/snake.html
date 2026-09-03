@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Play Snake Game at Ankan Gaming Zone. A modern, responsive game built with HTML5 Canvas and Vanilla JS.">
+    <meta name="keywords" content="Snake Game, Ankan Gaming Zone, mini-game, play online">
+    <meta name="author" content="Ankan Biswas">
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://Ankan-76.github.io/Ankan-Gaming-Zone/Games/Snake/snake.html">
+    <title>Snake Game | ANKAN GAMING ZONE</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../CSS/style.css">
+    <link rel="stylesheet" href="snake.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body class="bg-dark-blue">
+
+    <div id="header-placeholder"></div>
+
+    <main class="container-fluid min-vh-100 d-flex align-items-center justify-content-center py-3"
+        style="padding-top: 80px !important;">
+
+        <section class="game-card card border-0 shadow-lg p-0 position-relative">
+            <div class="card-body p-4 d-flex flex-column align-items-center">
+
+                <div class="w-100 d-flex justify-content-between align-items-end mb-3 game-header">
+                    <div>
+                        <h1 class="game-title m-0"><i class="fa-brands fa-python snake-logo"></i>SNAKE</h1>
+                    </div>
+                    <div class="text-end">
+                        <div class="score-box mb-1">Score: <span id="score">0</span></div>
+                        <div class="highscore-box">High: <span id="highScore">0</span></div>
+                    </div>
+                </div>
+
+                <div class="game-wrapper position-relative">
+                    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+                    <div id="startScreen" class="game-overlay active">
+                        <h2 class="mb-3 text-glow">ARE YOU READY?</h2>
+                        <button id="startBtn" class="btn btn-neon btn-lg">START GAME</button>
+                    </div>
+
+                    <div id="pauseScreen" class="game-overlay">
+                        <h2 class="mb-3 text-glow">PAUSED</h2>
+                        <button id="resumeBtn" class="btn btn-outline-light btn-lg">RESUME</button>
+                    </div>
+
+                    <div id="gameOverScreen" class="game-overlay">
+                        <h2 class="text-danger mb-2 text-glow-red">GAME OVER</h2>
+                        <p class="mb-4">Final Score: <span id="finalScore" class="fw-bold">0</span></p>
+                        <button id="restartBtn" class="btn btn-neon btn-lg">TRY AGAIN</button>
+                    </div>
+                </div>
+
+                <aside class="mobile-controls mt-4 d-flex flex-column align-items-center d-lg-none">
+                    <button class="ctrl-btn" id="upBtn" aria-label="Up">▲</button>
+                    <div class="d-flex gap-3 my-2">
+                        <button class="ctrl-btn" id="leftBtn" aria-label="Left">◀</button>
+                        <button class="ctrl-btn" id="rightBtn" aria-label="Right">▶</button>
+                    </div>
+                    <button class="ctrl-btn" id="downBtn" aria-label="Down">▼</button>
+                </aside>
+
+                <div class="mt-3 d-none d-lg-flex gap-2">
+                    <button id="uiPauseBtn" class="btn btn-sm btn-outline-secondary">Pause (Space)</button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../JS/script.js"></script>
+    <script src="snake.js"></script>
+    <script>
+        $(function () {
+            $("#header-placeholder").load("../../include/header.html");
+            $("#footer-placeholder").load("../../include/footer.html");
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "Ankan Gaming Zone",
+  "short_name": "Gaming Zone",
+  "description": "Play ultimate mini-games like Tic Tac Toe, Rock Paper Scissors, and Snake at Ankan Gaming Zone.",
+  "start_url": "/Ankan-Gaming-Zone/index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00ff00",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

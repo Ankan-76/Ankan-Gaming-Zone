@@ -1,0 +1,226 @@
+/* --- CSS Variables & Reset --- */
+:root {
+    --bg-dark: #050a14;
+    --bg-darker: #020408;
+    --primary-neon: #00f3ff; /* Electric Blue */
+    --secondary-neon: #ff0055; /* Cyber Pink/Orange mix */
+    --text-main: #e0e6ed;
+    --text-muted: #94a3b8;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+}
+
+/* --- Utilities --- */
+.text-neon { color: var(--primary-neon); text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); }
+.text-neon-secondary { color: var(--secondary-neon); text-shadow: 0 0 10px rgba(255, 0, 85, 0.5); }
+.text-muted-light { color: var(--text-muted); }
+.section-padding { padding: 80px 0; }
+
+.section-title {
+    font-weight: 800;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--primary-neon), var(--secondary-neon), var(--primary-neon));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShine 3s linear infinite;
+    display: inline-block;
+}
+
+.animated-title {
+    background: linear-gradient(90deg, var(--primary-neon), #fff, var(--secondary-neon), var(--primary-neon));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 3s linear infinite, letterMove 3s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.3));
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 100vh;
+    padding-top: 100px;
+    background: radial-gradient(circle at center, #1a233a 0%, var(--bg-dark) 70%);
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-animate {
+    animation: floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+    0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.3)); }
+    50% { transform: translateY(-15px); filter: drop-shadow(0 0 25px rgba(0, 243, 255, 0.6)); }
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(5, 10, 20, 0.8), rgba(5, 10, 20, 0.8)),
+        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.divider-glow {
+    width: 150px;
+    height: 4px;
+    background: var(--primary-neon);
+    box-shadow: 0 0 15px var(--primary-neon);
+    border-radius: 2px;
+}
+
+/* --- Glassmorphism Cards --- */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* --- Goal Cards --- */
+.goal-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.goal-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+    background: rgba(0, 243, 255, 0.05);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--primary-neon);
+    margin-bottom: 20px;
+}
+
+.goal-card h5 {
+    background: linear-gradient(90deg, #39ff14, #ccff00, #39ff14);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShine 3s linear infinite;
+    filter: drop-shadow(0 0 5px rgba(57, 255, 20, 0.3));
+}
+
+/* --- Vision Graphics --- */
+.floating-icon {
+    animation: float 6s ease-in-out infinite;
+    z-index: 2;
+    position: relative;
+}
+
+.glow-circle {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px; height: 200px;
+    background: var(--secondary-neon);
+    filter: blur(80px);
+    opacity: 0.2;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes textShine {
+    to { background-position: 200% center; }
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes letterMove {
+    0% { letter-spacing: 1px; }
+    100% { letter-spacing: 6px; }
+}
+
+/* --- CTA & Buttons --- */
+.cta-section {
+    background: linear-gradient(0deg, var(--bg-darker) 0%, rgba(0,243,255,0.05) 100%);
+}
+
+.btn-neon {
+    background: transparent;
+    border: 2px solid var(--primary-neon);
+    color: var(--primary-neon);
+    padding: 12px 35px;
+    font-family: var(--font-heading);
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-neon::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 0%; height: 100%;
+    background: var(--primary-neon);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.btn-neon:hover {
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--primary-neon);
+}
+
+.btn-neon:hover::before {
+    width: 100%;
+}
+
+/* --- Scroll Animations (Intersection Observer Targets) --- */
+.reveal {
+    opacity: 0;
+    transition: all 0.8s ease-out;
+}
+
+.reveal.fade-up { transform: translateY(50px); }
+.reveal.fade-left { transform: translateX(-50px); }
+.reveal.fade-right { transform: translateX(50px); }
+.reveal.zoom-in { transform: scale(0.9); }
+
+.reveal.active {
+    opacity: 1;
+    transform: translate(0) scale(1);
+}

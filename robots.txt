@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://Ankan-76.github.io/Ankan-Gaming-Zone/sitemap.xml

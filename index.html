@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Welcome to Ankan Gaming Zone. Play the ultimate mini-games like Tic Tac Toe, Rock Paper Scissors, and Snake in an amazing gaming arena.">
+    <meta name="keywords" content="Ankan Gaming Zone, online games, mini-games, play games online, Ankan Biswas">
+    <meta name="author" content="Ankan Biswas">
+    <meta name="robots" content="index, follow">
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="ANKAN GAMING ZONE">
+    <meta property="og:description"
+        content="Welcome to Ankan Gaming Zone. Play the ultimate mini-games in an amazing gaming arena.">
+    <meta property="og:image" content="https://Ankan-76.github.io/Ankan-Gaming-Zone/logo.png">
+    <meta property="og:url" content="https://Ankan-76.github.io/Ankan-Gaming-Zone/index.html">
+    <meta property="og:type" content="website">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="site.webmanifest">
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://Ankan-76.github.io/Ankan-Gaming-Zone/index.html">
+
+    <title>ANKAN GAMING ZONE - Play Ultimate Mini Games</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body class="bg-dark text-light">
+
+    <div id="header-placeholder"></div>
+
+    <section id="hero" class="d-flex align-items-center justify-content-center text-center">
+        <div class="hero-overlay"></div>
+        <div class="container position-relative z-2 reveal">
+            <h1 class="display-3 fw-bold text-uppercase mb-3"><span class="text-colorful-animated">Enter the
+                    Ultimate</span> <br><span class="text-colorful-animated">Gaming Arena</span></h1>
+            <div class="word-carousel mb-5">
+                <span>Play</span>
+                <span>Complete</span>
+                <span>Dominate</span>
+            </div>
+            <a href="games.html" class="btn btn-neon btn-lg">Explore Games</a>
+        </div>
+    </section>
+
+    <section id="games" class="py-5 section-bg">
+        <div class="container">
+            <div class="row mb-5 text-center reveal">
+                <div class="col-12">
+                    <h2 class="section-title">Explore <span class="text-accent">Games</span></h2>
+                    <div class="divider mx-auto"></div>
+                </div>
+            </div>
+
+            <div class="row mb-5 reveal">
+                <div class="col-12 text-center">
+                    <div class="btn-group flex-wrap" role="group" id="portfolio-flters">
+                        <button type="button" class="btn btn-filter active" data-filter="all">All</button>
+                        <button type="button" class="btn btn-filter" data-filter="action">Action</button>
+                        <button type="button" class="btn btn-filter" data-filter="puzzle">Puzzle</button>
+                        <button type="button" class="btn btn-filter" data-filter="strategy">Strategy</button>
+                        <button type="button" class="btn btn-filter" data-filter="multiplayer">Multiplayer</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4" id="game-grid">
+                <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="strategy">
+                    <div class="card game-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="Games/Tic Tac Toe/Tic-Tac-Toe.png" class="card-img-top" alt="Fantasy Quest">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Tic-Tac-Toe</h5>
+                            <a href="Games/Tic Tac Toe/tictoctoe.html" class="btn btn-sm btn-outline-neon mt-2">Play
+                                Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="action">
+                    <div class="card game-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="Games/Snake/Snake.png" class="card-img-top" alt="Cyber Ops">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Snake Game</h5>
+                            <a href="Games/Snake/snake.html" class="btn btn-sm btn-outline-neon mt-2">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="action">
+                    <div class="card game-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Warzone Strike">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Warzone Strike</h5>
+                            <a href="#" class="btn btn-sm btn-outline-neon mt-2">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="multiplayer">
+                    <div class="card game-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Mystic Enigma">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Mystic Enigma</h5>
+                            <a href="#" class="btn btn-sm btn-outline-neon mt-2">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="strategy">
+                    <div class="card game-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1640499900704-b00dd6a1103a?auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Galactic Assault">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Galactic Assault</h5>
+                            <a href="#" class="btn btn-sm btn-outline-neon mt-2">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="puzzle">
+                    <div class="card game-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Ancient Puzzles">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Ancient Puzzles</h5>
+                            <a href="#" class="btn btn-sm btn-outline-neon mt-2">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="action">
+                    <div class="card game-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Batting Assault">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Batting Assault</h5>
+                            <a href="#" class="btn btn-sm btn-outline-neon mt-2">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 game-item">
+                    <div class="card game-card h-100">
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Racing Rivals">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Explore other games</h5>
+                            <a href="games.html" class="btn btn-sm btn-outline-neon mt-2">More Games</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5 text-center reveal" style="background-color: var(--bg-dark);">
+        <div class="container">
+            <div class="cta-box p-5 rounded border-neon" style="background-color: transparent;">
+                <h3 class="mb-3">Have suggestions or want to collaborate?</h3>
+                <p class="mb-4 text-accent">Join the community and help us build the ultimate platform.</p>
+                <a href="contact.html" class="btn btn-neon btn-lg">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        $(function () {
+            $("#footer-placeholder").load("include/footer.html");
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,429 @@
+/* --- Variables & Reset --- */
+:root {
+    --bg-dark: #050505;
+    --bg-card: #0f1014;
+    --neon-blue: #00f0ff;
+    --neon-orange: #ff9900;
+    --neon-green: #39ff14;
+    --text-primary: #ffffff;
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, .brand-text, .nav-link {
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+}
+
+/* --- Navigation --- */
+.navbar {
+    background: rgba(15, 23, 42, 0.85); /* Transparent start */
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    padding: 15px 0;
+}
+
+.navbar.scrolled {
+    background: #0f172a;
+    box-shadow: 0 4px 20px rgba(0, 240, 255, 0.2);
+    padding: 10px 0;
+}
+
+.nav-logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-text {
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: white;
+}
+
+.text-accent {
+    color: var(--neon-orange);
+}
+
+.text-accent-green {
+    color: var(--neon-green);
+}
+
+.nav-link {
+    color: #ccc !important;
+    position: relative;
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--neon-blue) !important;
+}
+
+/* Underline Animation */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--neon-blue);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.btn-contact {
+    border: 1px solid var(--neon-blue);
+    border-radius: 4px;
+    padding: 5px 15px !important;
+}
+
+.btn-contact:hover {
+    background: var(--neon-blue);
+    color: black !important;
+}
+
+/* --- Hero Section --- */
+#hero {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+    position: relative;
+    margin-top: -76px; /* Offset navbar height */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.95) 100%),
+                radial-gradient(circle at center, rgba(0, 240, 255, 0.2) 0%, rgba(5,5,5,0.8) 70%);
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, #fff, var(--neon-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+}
+
+/* --- Buttons --- */
+.btn-neon {
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    padding: 12px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.btn-neon:hover {
+    background: var(--neon-blue);
+    color: #000;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
+    transform: translateY(-3px);
+}
+
+/* --- Games Section --- */
+#games {
+    position: relative;
+    background-color: #050505;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* Animated Grid Background */
+#games::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    transform: perspective(500px) rotateX(60deg);
+    animation: gameGridMove 20s linear infinite;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Ambient Glows */
+#games::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 240, 255, 0.08), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(255, 0, 255, 0.08), transparent 40%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes gameGridMove {
+    0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+    100% { transform: perspective(500px) rotateX(60deg) translateY(40px); }
+}
+
+.section-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.divider {
+    height: 3px;
+    width: 60px;
+    background: var(--neon-orange);
+    box-shadow: 0 0 10px var(--neon-orange);
+}
+
+/* Filter Buttons */
+.btn-filter {
+    background: var(--bg-card);
+    color: #888;
+    border: 1px solid #333;
+    margin: 5px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.btn-filter:hover, .btn-filter.active {
+    background: var(--neon-blue);
+    color: black;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+}
+
+/* Game Cards */
+.game-card {
+    background: var(--bg-card);
+    border: 1px solid #222;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+    border-color: var(--neon-blue);
+}
+
+.card-img-wrapper {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.game-card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.btn-outline-neon {
+    border: 1px solid var(--neon-orange);
+    color: var(--neon-orange);
+    padding: 5px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.btn-outline-neon:hover {
+    background: var(--neon-orange);
+    color: black;
+    box-shadow: 0 0 15px rgba(255, 153, 0, 0.6);
+}
+
+/* --- Contact CTA --- */
+.cta-box {
+    background: var(--bg-card);
+    border: 1px solid #333;
+    position: relative;
+    overflow: hidden;
+}
+
+.border-neon:hover {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+/* --- Footer --- */
+.bg-darker {
+    background-color: #020617;
+    border-top: 1px solid #222;
+}
+
+.social-icons a {
+    color: #888;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px) scale(1.1);
+}
+
+.social-icons a:hover .fa-github { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+.social-icons a:hover .fa-linkedin-in { color: #0077b5; text-shadow: 0 0 10px rgba(0,119,181,0.5); }
+.social-icons a:hover .fa-facebook-f { color: #1877f2; text-shadow: 0 0 10px rgba(24,119,242,0.5); }
+.social-icons a:hover .fa-instagram { color: #e1306c; text-shadow: 0 0 10px rgba(225,48,108,0.5); }
+.social-icons a:hover .fa-youtube { color: #ff0000; text-shadow: 0 0 10px rgba(255,0,0,0.5); }
+.social-icons a:hover .fa-x-twitter { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+
+/* --- Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.india-flag-animate {
+    background: linear-gradient(90deg, #FF9933, #FFFFFF, #138808, #FF9933);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: flagShine 4s linear infinite;
+}
+@keyframes flagShine { to { background-position: -300% center; } }
+
+.text-colorful-animated {
+    background: linear-gradient(90deg, #ff0055, #ffdd00, #00ff00, #00f0ff, #aa00ff, #ff0055);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorfulFlow 4s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.3));
+}
+@keyframes colorfulFlow { to { background-position: 300% center; } }
+
+/* Word Carousel Animation */
+.word-carousel {
+    height: 40px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.word-carousel span {
+    position: absolute;
+    opacity: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: rotateWord 6s linear infinite;
+    color: #ffdd00;
+    filter: drop-shadow(0 0 5px rgba(255, 221, 0, 0.5));
+}
+
+.word-carousel span:nth-child(1) { animation-delay: 0s; }
+.word-carousel span:nth-child(2) { animation-delay: 2s; }
+.word-carousel span:nth-child(3) { animation-delay: 4s; }
+
+@keyframes rotateWord {
+    0% { opacity: 0; transform: translateX(20px); }
+    5% { opacity: 1; transform: translateX(0); }
+    28% { opacity: 1; transform: translateX(0); }
+    33% { opacity: 0; transform: translateX(-20px); }
+    100% { opacity: 0; transform: translateX(-20px); }
+}
+
+.footer-contact-animate {
+    background: linear-gradient(90deg, #00f0ff, #39ff14, #ff9900, #00f0ff);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: footerShine 3s linear infinite;
+    font-weight: bold;
+}
+@keyframes footerShine { to { background-position: 200% center; } }/* Quick Links */
+/* Footer Links Section */
+.footer-link {
+    color: #a0a0a0;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+.footer-link:hover {
+    color: var(--neon-blue);
+    transform: translateX(5px);
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
+.developer-text {
+    font-size: 0.95rem;
+}
+.developer-link {
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+}
+.developer-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--neon-green);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 5px var(--neon-green);
+}
+.developer-link:hover::after {
+    width: 100%;
+}
+.developer-link:hover {
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
+}
+.ls-1 {
+    letter-spacing: 1px;
+}

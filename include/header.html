@@ -1,0 +1,43 @@
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo.png" alt="Ankan Gaming Zone Logo" class="nav-logo me-2">
+                <span class="brand-text india-flag-animate">ANKAN GAMING ZONE</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="fa-solid fa-bars text-light"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="games.html">Games</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<script>
+    (function () {
+        // Dynamically compute the path back to the root based on styling path
+        var styleLink = document.querySelector('link[href$="CSS/style.css"]');
+        var basePath = styleLink ? styleLink.getAttribute("href").replace("CSS/style.css", "") : "";
+
+        // Update all relative links/images inside the header container
+        $('#header-placeholder a:not([href^="http"]):not([href^="#"])').each(function () {
+            var href = $(this).attr('href');
+            if (href && !href.startsWith(basePath)) {
+                $(this).attr('href', basePath + href);
+            }
+        });
+
+        $('#header-placeholder img:not([src^="http"])').each(function () {
+            var src = $(this).attr('src');
+            if (src && !src.startsWith(basePath)) {
+                $(this).attr('src', basePath + src);
+            }
+        });
+    })();
+</script>

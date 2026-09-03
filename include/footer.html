@@ -1,0 +1,108 @@
+<footer class="footer pt-5 pb-4 bg-darker">
+    <div class="container">
+        <div class="row gx-5 justify-content-between">
+            <!-- Brand & Info -->
+            <div class="col-md-5 mb-5 mb-md-0 text-center text-md-start">
+                <a href="index.html" class="text-decoration-none d-inline-flex align-items-center mb-3">
+                    <img src="logo.png" alt="Ankan Gaming Zone Logo" class="nav-logo me-2">
+                    <span class="brand-text"><span class="text-accent">ANKAN</span> GAMING <span
+                            class="text-accent-green">ZONE</span></span>
+                </a>
+                <p class="text-light mb-4" style="max-width: 350px; font-size: 0.95rem; opacity: 0.85;">
+                    Your ultimate destination for modern, interactive browser games. Experience high-performance,
+                    responsive, and engaging digital entertainment.
+                </p>
+                <div class="social-icons">
+                    <a href="https://github.com/Ankan-76" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/ankanbiswas43" target="_blank"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/Ankan7699" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/ankan_76?igsh=MXR5M2xndGlwZjZqcQ==" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@abg76yt?si=ipYEC0kb__XyI09m" target="_blank"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/Ankan7699" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-5 d-flex justify-content-center justify-content-md-end text-center text-md-start">
+                <div class="max-w-200">
+                    <h6 class="text-uppercase text-white fw-bold mb-4 ls-1">Quick Links</h6>
+                    <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="about.html" class="footer-link">About</a></li>
+                        <li><a href="games.html" class="footer-link">Games</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-secondary opacity-25 mt-5 mb-4">
+
+        <!-- Copyright -->
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                <p class="small mb-0 text-light">&copy; 2026 Ankan Gaming Zone. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="small mb-0 text-light developer-text">
+                    Developed by <a href="https://ankan-76.github.io/portfolio/" target="_blank"
+                        class="text-accent-green developer-link fw-bold">Ankan Biswas</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function () {
+        // Dynamically compute the path back to the root based on styling path
+        var styleLink = document.querySelector('link[href$="CSS/style.css"]');
+        var basePath = styleLink ? styleLink.getAttribute("href").replace("CSS/style.css", "") : "";
+
+        // Update all relative links/images inside the footer container
+        $('#footer-placeholder a:not([href^="http"]):not([href^="#"])').each(function () {
+            var href = $(this).attr('href');
+            if (href && !href.startsWith(basePath)) {
+                $(this).attr('href', basePath + href);
+            }
+        });
+
+        $('#footer-placeholder img:not([src^="http"])').each(function () {
+            var src = $(this).attr('src');
+            if (src && !src.startsWith(basePath)) {
+                $(this).attr('src', basePath + src);
+            }
+        });
+
+        // Inject JS dynamically to avoid breaking nested structures
+        if ($('script[src$="JS/script.js"]').length === 0) {
+            var s = document.createElement('script');
+            s.src = basePath + 'JS/script.js';
+            document.body.appendChild(s);
+        }
+
+        if ($('script[src*="bootstrap.bundle.min.js"]').length === 0) {
+            var b = document.createElement('script');
+            b.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
+            document.body.appendChild(b);
+        }
+
+        // Apply specific logic for nested game pages
+        if (basePath !== "") {
+            const checkHeader = setInterval(() => {
+                if ($('#mainNav').length) {
+                    clearInterval(checkHeader);
+                    $('.nav-link').removeClass('active');
+                    $('.nav-link[href="' + basePath + 'games.html"]').addClass('active');
+                    const navbar = document.getElementById('mainNav');
+                    if (navbar) {
+                        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+                    }
+                }
+            }, 100);
+        }
+    })();
+</script>
